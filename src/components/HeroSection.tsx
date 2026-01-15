@@ -1,3 +1,5 @@
+import hadi from "/hadi_frame.webp";
+
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-emerald-50 via-teal-50 to-cyan-50">
@@ -55,99 +57,28 @@ export default function HeroSection() {
           </div>
 
           {/* Right – Live Preview */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
-            {/* Card */}
+
+          <div className=" relative mx-auto w-full max-w-sm lg:max-w-md">
             <div
-              className="relative aspect-[3/4] rounded-3xl overflow-hidden
-               backdrop-blur-xl bg-white/30 border border-white/40
-               shadow-2xl shadow-black/10
-               transition-all duration-500 hover:scale-[1.03]
-               hover:shadow-emerald-500/20 group"
+              className="relative aspect-square rounded-xl overflow-hidden
+      bg-linear-to-br from-gray-50 to-white border border-gray-200
+      shadow-lg transition-all duration-300 hover:shadow-xl group"
             >
-              {/* Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-cyan-500/10 to-transparent" />
-
-              {/* User Photo (Inside Frame Area) */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div
-                  className="w-[72%] aspect-square rounded-full overflow-hidden
-                   border-[10px] border-white/70
-                   shadow-2xl bg-gray-100"
-                >
-                  <img
-                    src="https://i.ibb.co.com/ycGHJ49r/blob.jpg"
-                    alt="User photo preview"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Frame Overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                <svg
-                  viewBox="0 0 400 533"
-                  className="w-full h-full"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Outer Frame */}
-                  <rect
-                    x="18"
-                    y="18"
-                    width="364"
-                    height="497"
-                    rx="28"
-                    stroke="white"
-                    strokeWidth="14"
-                    strokeOpacity="0.9"
-                  />
-
-                  {/* Photo Cut Area */}
-                  <circle
-                    cx="200"
-                    cy="250"
-                    r="135"
-                    stroke="white"
-                    strokeWidth="12"
-                    strokeOpacity="0.95"
-                    strokeDasharray="6 6"
-                  />
-                </svg>
-              </div>
-
-              {/* Instruction Overlay */}
-              <div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2
-                 bg-black/60 text-white text-sm
-                 px-5 py-2 rounded-full backdrop-blur-md
-                 opacity-0 group-hover:opacity-100
-                 transition-opacity duration-300"
-              >
-                Your photo will appear here
-              </div>
-
-              {/* Shine Effect */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-30
-                 bg-gradient-to-t from-transparent via-white/40 to-transparent
-                 pointer-events-none transition-opacity duration-700"
+              <img
+                src={hadi}
+                alt="Photo preview"
+                className="absolute inset-0 w-full h-full object-cover"
               />
+
+              <div className="absolute inset-0 flex items-center justify-center b/* g-black/30  */opacity-100 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  className="text-white text-base font-medium px-6 py-2.5 
+        bg-black/60 rounded-full backdrop-blur-md"
+                >
+                  Your photo here
+                </span>
+              </div>
             </div>
-
-            {/* Floating Label */}
-            {/* <div
-              className="absolute -top-4 -right-4
-               bg-emerald-600 text-white
-               text-sm font-semibold px-4 py-2
-               rounded-full shadow-lg"
-            >
-              Photo Frame Maker
-            </div> */}
-
-            {/* Subtitle */}
-            <p className="mt-6 text-center text-gray-600 text-sm">
-              Upload your photo, choose a frame, and download it instantly
-            </p>
           </div>
         </div>
       </div>

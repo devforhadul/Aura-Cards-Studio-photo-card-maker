@@ -1,24 +1,24 @@
 import React from "react";
-import type { CardState, Frame } from "../types";
+import type { CardState } from "../types";
+
 
 interface ControlPanelProps {
-  state: CardState;
-  setState: React.Dispatch<React.SetStateAction<CardState>>;
-  selectedFrame: Frame;
+  cardState: CardState;
+  setCardState: React.Dispatch<React.SetStateAction<CardState>>;
   onUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onDownload: () => void;
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({
-  state,
-  setState,
+  cardState,
+  setCardState,
   onUpload,
   onDownload,
 }) => {
   return (
-    <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-[2rem] shadow-2xl space-y-8 border border-gray-100">
+    <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-xl shadow-xl shadow-gray-200/50 space-y-8 border border-gray-100">
       {/* zoom and out adjust */}
-      {state.image && (
+      {cardState.image && (
         <div className="space-y-6">
           <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
             Adjustments
@@ -30,7 +30,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 Magnification
               </span>
               <span className="text-sm font-black text-green-600">
-                {(state.scale * 100).toFixed(0)}%
+                {(cardState.scale * 100).toFixed(0)}%
               </span>
             </div>
             <input
@@ -38,9 +38,9 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               min="0.1"
               max="5"
               step="0.01"
-              value={state.scale}
+              value={cardState.scale}
               onChange={(e) =>
-                setState((prev) => ({
+                setCardState((prev) => ({
                   ...prev,
                   scale: parseFloat(e.target.value),
                 }))
@@ -53,9 +53,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
       {/* Upload Image */}
       <div className="space-y-4">
-        <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
-          Upload Image
-        </h3>
+        <h3 className="text-lg font-bold text-gray-800 ">Upload Image</h3>
         <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-gray-100 rounded-2xl cursor-pointer hover:border-green-400 hover:bg-green-50/30 transition-all group">
           <div className="flex items-center gap-3">
             <div className="bg-green-100 p-2 rounded-full text-green-600 group-hover:scale-110 transition-transform">
@@ -85,7 +83,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       </div>
 
       {/* Input name ans title */}
-      <div className="space-y-">
+      {/* <div className="space-y-">
         <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
           Your Name
         </h3>
@@ -101,15 +99,23 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           // }
           className="w-full px-4 py-3 border rounded-xl"
         />
-      </div>
+      </div> */}
 
       <button
+        onClick={onDownload}
+        disabled={!cardState.image}
+        className="cursor-pointer w-full px-8 py-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-all shadow-xl shadow-indigo-200 items-center gap-3 disabled:grayscale text-center"
+      >
+        Download
+      </button>
+
+      {/* <button
         onClick={onDownload}
         disabled={!state.image}
         className="w-full py-4 bg-green-600 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-green-700 hover:shadow-xl transition-all disabled:opacity-30 disabled:grayscale"
       >
-        DOWNLOAD
-      </button>
+        Download
+      </button> */}
     </div>
   );
 };

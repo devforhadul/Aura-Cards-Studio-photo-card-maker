@@ -3,6 +3,7 @@ import event from "/image.png";
 import img3 from "/image3.png";
 import hadi from "/hadi_frame.webp";
 import bnp from "/bnp_frame.webp";
+import kamal_frm from "/kamal_frame.webp";
 
 export const FRAMES: Frame[] = [
   {
@@ -43,7 +44,7 @@ export const FRAMES: Frame[] = [
   {
     id: "6",
     name: "Midnight",
-    url: event,
+    url: kamal_frm,
     color: "#18181b",
     category: "a",
   },

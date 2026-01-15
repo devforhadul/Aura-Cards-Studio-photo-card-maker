@@ -62,12 +62,12 @@ export default function FrameSelection() {
                 />
 
                 {/* Badge */}
-                <span
+                {/* <span
                   className="absolute top-4 left-4 bg-green-600 text-white
                      text-xs font-medium px-3 py-1.5 rounded-full shadow-sm"
                 >
                   {frame.name}
-                </span>
+                </span> */}
               </div>
 
               {/* Content */}
