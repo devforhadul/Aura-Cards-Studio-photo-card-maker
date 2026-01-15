@@ -17,7 +17,41 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 }) => {
   return (
     <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-[2rem] shadow-2xl space-y-8 border border-gray-100">
-      
+      {/* zoom and out adjust */}
+      {state.image && (
+        <div className="space-y-6">
+          <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
+            Adjustments
+          </h3>
+
+          <div className="space-y-3">
+            <div className="flex justify-between items-end">
+              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                Magnification
+              </span>
+              <span className="text-sm font-black text-green-600">
+                {(state.scale * 100).toFixed(0)}%
+              </span>
+            </div>
+            <input
+              type="range"
+              min="0.1"
+              max="5"
+              step="0.01"
+              value={state.scale}
+              onChange={(e) =>
+                setState((prev) => ({
+                  ...prev,
+                  scale: parseFloat(e.target.value),
+                }))
+              }
+              className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-green-600"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Upload Image */}
       <div className="space-y-4">
         <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
           Upload Image
@@ -50,54 +84,28 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         </label>
       </div>
 
-      <div className="space-y-6">
+      {/* Input name ans title */}
+      <div className="space-y-">
         <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
-          Adjustments
+          Your Name
         </h3>
-
-        <div className="space-y-3">
-          <div className="flex justify-between items-end">
-            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
-              Magnification
-            </span>
-            <span className="text-sm font-black text-green-600">
-              {(state.scale * 100).toFixed(0)}%
-            </span>
-          </div>
-          <input
-            type="range"
-            min="0.1"
-            max="5"
-            step="0.01"
-            value={state.scale}
-            onChange={(e) =>
-              setState((prev) => ({
-                ...prev,
-                scale: parseFloat(e.target.value),
-              }))
-            }
-            className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-green-600"
-          />
-        </div>
-
-        {/* <div className="space-y-3">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block">Visual Tone</span>
-          <div className="flex flex-wrap gap-2">
-            {FILTERS.map((f) => (
-              <button
-                key={f.name}
-                onClick={() => setState(prev => ({ ...prev, filter: f.value }))}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${state.filter === f.value ? 'bg-green-600 text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
-              >
-                {f.name}
-              </button>
-            ))}
-          </div>
-        </div> */}
+        <input
+          type="text"
+          placeholder="Enter your name"
+          // value={cardState.nameText}
+          // onChange={(e) =>
+          //   setCardState((prev) => ({
+          //     ...prev,
+          //     nameText: e.target.value,
+          //   }))
+          // }
+          className="w-full px-4 py-3 border rounded-xl"
+        />
       </div>
 
       <button
         onClick={onDownload}
+        disabled={!state.image}
         className="w-full py-4 bg-green-600 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-green-700 hover:shadow-xl transition-all disabled:opacity-30 disabled:grayscale"
       >
         DOWNLOAD

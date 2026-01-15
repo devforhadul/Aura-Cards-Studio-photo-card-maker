@@ -9,19 +9,9 @@ export default function FrameCreate() {
   /* ---------------- Route Param ---------------- */
   const { id } = useParams<{ id: string }>();
   const photoFrame = FRAMES.find((item) => item.id === id);
-
-  /* ---------------- Selected Frame ---------------- */
-  // const [selectedFrame, setSelectedFrame] = useState<Frame>(
-  //   frameFromParams ?? FRAMES[0]
-  // );
-
-  /* Sync frame when route param changes */
-  // useEffect(() => {
-  //   if (frameFromParams) {
-  //     setSelectedFrame(frameFromParams);
-  //   }
-  // }, [frameFromParams]);
-
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [downloading, setDownloading] = useState<boolean>(false);
+  console.log(downloading);
   /* ---------------- Card State ---------------- */
   const [cardState, setCardState] = useState<CardState>({
     image: null,
@@ -31,6 +21,8 @@ export default function FrameCreate() {
     brightness: 1,
     contrast: 1,
     filter: "none",
+
+    nameText: "Forhad",
   });
 
   /* ---------------- Drag State ---------------- */
@@ -93,8 +85,85 @@ export default function FrameCreate() {
     handleMove(e.touches[0].clientX, e.touches[0].clientY);
 
   /* ---------------- Download ---------------- */
-  const handleDownload = () => {
-    alert("Profile picture ready for download!");
+  const handleDownload = async () => {
+    if (!cardState.image || !photoFrame) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    setDownloading(true);
+
+    // Final image size (recommended)
+    const SIZE = 1600;
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+
+    // Load images
+    const userImg = new Image();
+    const frameImg = new Image();
+
+    userImg.src = cardState.image;
+    frameImg.src = photoFrame.url;
+
+    await Promise.all([
+      new Promise((res) => (userImg.onload = res)),
+      new Promise((res) => (frameImg.onload = res)),
+    ]);
+
+    // Clear canvas
+    ctx.clearRect(0, 0, SIZE, SIZE);
+
+    /* ---------- Draw User Image ---------- */
+    ctx.save();
+
+    const scale = cardState.scale;
+    const x = cardState.posX;
+    const y = cardState.posY;
+
+    ctx.translate(x + SIZE / 2, y + SIZE / 2);
+    ctx.scale(scale, scale);
+
+    ctx.drawImage(userImg, -SIZE / 2, -SIZE / 2, SIZE, SIZE);
+
+    ctx.restore();
+
+    /* ---------- Draw Frame ---------- */
+    ctx.drawImage(frameImg, 0, 0, SIZE, SIZE);
+
+    setDownloading(false);
+    /* ---------- Download ---------- */
+    const link = document.createElement("a");
+    link.download = photoFrame.name;
+    link.href = canvas.toDataURL("image/png", 1);
+    link.click();
+  };
+
+  //* ----------------mouse while zoom and out --------------- */
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 3;
+  const ZOOM_STEP = 0.1;
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (!cardState.image) return;
+
+    e.preventDefault();
+
+    setCardState((prev) => {
+      let newScale =
+        e.deltaY < 0
+          ? prev.scale + ZOOM_STEP // scroll up → zoom in
+          : prev.scale - ZOOM_STEP; // scroll down → zoom out
+
+      newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+
+      return {
+        ...prev,
+        scale: newScale,
+      };
+    });
   };
 
   /* ---------------- Fallback ---------------- */
@@ -104,7 +173,8 @@ export default function FrameCreate() {
 
   /* ---------------- Render ---------------- */
   return (
-    <main className="max-w-7xl mx-auto px-4 mt-8 md:mt-12 flex flex-col lg:flex-row gap-12 justify-center items-center">
+    <main className="min-h-screen max-w-7xl mx-auto px-4  flex flex-col lg:flex-row gap-12 justify-center items-center">
+      <canvas ref={canvasRef} className="hidden" />
       {/* <div>
         <button
           className="w-full py-4 bg-green-600 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-green-700 hover:shadow-xl transition-all disabled:opacity-30 disabled:grayscale"
@@ -124,6 +194,7 @@ export default function FrameCreate() {
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={handleEnd}
+        onWheel={handleWheel}
       >
         {/* User Image */}
         <div className="absolute inset-0 z-0 flex items-center justify-center bg-gray-50">

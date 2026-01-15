@@ -1,9 +1,9 @@
-
 export interface Frame {
   id: string;
   name: string;
   url: string;
   color: string;
+  category: string;
 }
 
 export interface CardState {
@@ -14,4 +14,7 @@ export interface CardState {
   brightness: number;
   contrast: number;
   filter: string;
+
+  nameText?: string;
+  titleText?: string;
 }

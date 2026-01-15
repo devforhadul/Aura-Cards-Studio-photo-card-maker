@@ -11,7 +11,7 @@ export default function FrameSelection() {
   // );
 
   return (
-    <section className="py-16 bg-white">
+    <section id="frames" className="py-16 bg-white">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-10">
@@ -43,11 +43,11 @@ export default function FrameSelection() {
         </div>
 
         {/* Frames Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-7 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 md:gap-8">
           {FRAMES.map((frame) => (
             <div
               key={frame.id}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden
+              className="bg-white rounded-xl shadow-lg overflow-hidden
                  hover:shadow-xl transition-all duration-300 group
                  border border-gray-100"
             >
@@ -71,7 +71,7 @@ export default function FrameSelection() {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-3 md:p-4">
                 {/* <h3 className="font-bold text-lg text-gray-900 mb-4 line-clamp-1">
                   {frame.name}
                 </h3> */}
@@ -79,7 +79,7 @@ export default function FrameSelection() {
                 <a href={`/frame/${frame.id}`}>
                   <button
                     className="w-full bg-green-600 hover:bg-green-700
-                       text-white font-medium py-3 rounded-xl
+                       text-white font-medium py-2 rounded-xl
                        transition-colors duration-200 shadow-sm
                        hover:shadow-md active:scale-[0.98] cursor-pointer"
                   >

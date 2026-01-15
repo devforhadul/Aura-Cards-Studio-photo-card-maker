@@ -26,20 +26,21 @@ export default function HeroSection() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-lg shadow-lg shadow-emerald-200/50 transition-colors transform hover:scale-105 active:scale-95">
-                Create Now
-              </button>
+              <a href="#frames">
+                <button className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-lg shadow-lg shadow-emerald-200/50 transition-colors transform hover:scale-105 active:scale-95">
+                  Browse Frames
+                </button>
+              </a>
 
-              <button className="px-8 py-4 bg-white/70 backdrop-blur-md border border-white/40 hover:bg-white/90 font-medium rounded-xl text-lg transition-all transform hover:scale-105">
+              {/* <button className="px-8 py-4 bg-white/70 backdrop-blur-md border border-white/40 hover:bg-white/90 font-medium rounded-xl text-lg transition-all transform hover:scale-105">
                 Browse Frames
-              </button>
+              </button> */}
             </div>
 
             {/* Trust Badges */}
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-gray-600">
+            <div className="mt-8 flex flex-wrap gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/40 shadow-sm">
-                <span className="text-emerald-600">✓</span> High-Quality PNG
-                Output
+                <span className="text-emerald-600">✓</span> High-Quality Output
               </div>
 
               <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/40 shadow-sm">
@@ -134,14 +135,14 @@ export default function HeroSection() {
             </div>
 
             {/* Floating Label */}
-            <div
+            {/* <div
               className="absolute -top-4 -right-4
                bg-emerald-600 text-white
                text-sm font-semibold px-4 py-2
                rounded-full shadow-lg"
             >
               Photo Frame Maker
-            </div>
+            </div> */}
 
             {/* Subtitle */}
             <p className="mt-6 text-center text-gray-600 text-sm">
