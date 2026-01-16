@@ -1,4 +1,4 @@
-import hadi from "/hadi_frame.webp";
+import reunion_2026_forhad from "/reunion_2026_forhad.png";
 
 export default function HeroSection() {
   return (
@@ -21,13 +21,13 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-gray-700 leading-relaxed">
+            <p className="mt-3 text-sm sm:text-xl text-gray-700 leading-relaxed ">
               Upload your photo in seconds, choose a beautiful frame, and
               generate high-quality campaign or promotional photo cards
               instantly.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-5 flex flex-wrap gap-4">
               <a href="#frames">
                 <button className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-lg shadow-lg shadow-emerald-200/50 transition-colors transform hover:scale-105 active:scale-95">
                   Browse Frames
@@ -46,13 +46,13 @@ export default function HeroSection() {
               </div>
 
               <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/40 shadow-sm">
-                <span className="text-emerald-600">✓</span> Instant Download
+                <span className="text-emerald-600">✓</span> Instant Download • 100% Free
               </div>
-
+{/* 
               <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/40 shadow-sm">
                 <span className="text-emerald-600">✓</span> 100% Free • No Login
                 Required
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -65,17 +65,17 @@ export default function HeroSection() {
       shadow-lg transition-all duration-300 hover:shadow-xl group"
             >
               <img
-                src={hadi}
+                src={reunion_2026_forhad}
                 alt="Photo preview"
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
-              <div className="absolute inset-0 flex items-center justify-center b/* g-black/30  */opacity-100 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-100 group-hover:opacity-100 transition-opacity duration-300">
                 <span
                   className="text-white text-base font-medium px-6 py-2.5 
-        bg-black/60 rounded-full backdrop-blur-md"
+        "
                 >
-                  Your photo here
+                  Your photo here...
                 </span>
               </div>
             </div>

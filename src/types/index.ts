@@ -1,9 +1,13 @@
-export interface Frame {
+export interface FrameType {
   id: string;
-  name: string;
-  url: string;
-  color: string;
+  frameTitle: string;
+  nameDetails: string;
   category: string;
+  frameURL: string;
+  price?: string;
+  authorName?: string;
+  authorId?: string;
+  status?: "PUBLISHED" | "UNPUBLISHED" | "DRAFT";
 }
 
 export interface CardState {
@@ -17,4 +21,11 @@ export interface CardState {
 
   nameText?: string;
   titleText?: string;
+}
+
+export interface FrameData {
+  title: string;
+  details: string;
+  image: string | null;
+  timestamp: number;
 }

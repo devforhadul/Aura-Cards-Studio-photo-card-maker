@@ -1,59 +1,76 @@
-import type { Frame } from "../types";
-import event from "/image.png";
-import img3 from "/image3.png";
-import hadi from "/hadi_frame.webp";
-import bnp from "/bnp_frame.webp";
-import kamal_frm from "/kamal_frame.webp";
+import type { FrameType } from "../types";
 
-export const FRAMES: Frame[] = [
+export const FRAMES: FrameType[] = [
   {
     id: "1",
-    name: "Masud",
-    url: hadi,
-    color: "#009444",
-    category: "Politics",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "event",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768594939/reunion_2026_pgmphs_epjraf.png",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
   {
     id: "2",
-    name: "Justice Green",
-    url: event,
-    color: "#009444",
-    category: "Event",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "justice",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768596491/justice_hadi_q3a3cp.webp",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
   {
     id: "3",
-    name: "Justice for Hadi",
-    url: img3,
-    color: "#d4af37",
-    category: "a",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "event",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768594939/reunion_2026_pgmphs_epjraf.png",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
   {
     id: "4",
-    name: "Neon Blue",
-    url: bnp,
-    color: "#00f2ff",
-    category: "a",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "Politics",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768596120/daripalla_ha_vot_okvpry.png",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
   {
     id: "5",
-    name: "Soft Rose",
-    url: img3,
-    color: "#fda4af",
-    category: "a",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "Politics",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768596011/first_bd_bnp_ftfqip.webp",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
   {
     id: "6",
-    name: "Midnight",
-    url: kamal_frm,
-    color: "#18181b",
-    category: "a",
+    frameTitle: "ok",
+    nameDetails: "Masud",
+    category: "Politics",
+    frameURL:
+      "https://res.cloudinary.com/dtbyhp01i/image/upload/v1768596203/kamal_feni1_jamayat_gkqmni.webp",
+    price: "",
+    authorName: "Forhadul Islam",
+    authorId: "forhad",
+    status: "PUBLISHED",
   },
-];
-
-export const FILTERS = [
-  { name: "Original", value: "none" },
-  { name: "Warm", value: "sepia(0.2) saturate(1.2)" },
-  { name: "Bright", value: "brightness(1.1) contrast(1.1)" },
-  { name: "Dramatic", value: "contrast(1.4) brightness(0.9)" },
-  { name: "B&W", value: "grayscale(1)" },
 ];

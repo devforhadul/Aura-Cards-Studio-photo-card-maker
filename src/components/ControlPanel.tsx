@@ -15,12 +15,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   onUpload,
   onDownload,
 }) => {
+  
   return (
     <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-xl shadow-xl shadow-gray-200/50 space-y-8 border border-gray-100">
       {/* zoom and out adjust */}
       {cardState.image && (
-        <div className="space-y-6">
-          <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">
+        <div className="space-y-4">
+          <h3 className="text-xs font-black text-back uppercase ">
             Adjustments
           </h3>
 
@@ -30,7 +31,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 Magnification
               </span>
               <span className="text-sm font-black text-green-600">
-                {(cardState.scale * 100).toFixed(0)}%
+                {(cardState.scale * 20).toFixed(0)}%
               </span>
             </div>
             <input
@@ -52,9 +53,9 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       )}
 
       {/* Upload Image */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         <h3 className="text-lg font-bold text-gray-800 ">Upload Image</h3>
-        <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-gray-100 rounded-2xl cursor-pointer hover:border-green-400 hover:bg-green-50/30 transition-all group">
+        <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-green-400 rounded-2xl cursor-pointer hover:border-green-400 hover:bg-green-50/30 transition-all group">
           <div className="flex items-center gap-3">
             <div className="bg-green-100 p-2 rounded-full text-green-600 group-hover:scale-110 transition-transform">
               <svg

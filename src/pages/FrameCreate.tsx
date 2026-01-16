@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import type { CardState } from "../types";
 import { FRAMES } from "../data/Frames";
 import ControlPanel from "../components/ControlPanel";
@@ -8,20 +8,19 @@ import { Loading } from "notiflix";
 
 export default function FrameCreate() {
   const { id: paramsId } = useParams();
-  /* ---------------- Route Param ---------------- */
+  const [searchParms] = useSearchParams();
   const { id } = useParams<{ id: string }>();
   const photoFrame = FRAMES.find((item) => item.id === id);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const queryImgURL = searchParms.get("photo");
+  // const queryName = useSearchParams("n");
+  // const queryBatch = useSearchParams("b");
 
-  // প্রিভিউ বক্সের সাইজ রেফারেন্স (ড্র্যাগিং ক্যালকুলেশনের জন্য)
-  // রেসপন্সিভনেসের জন্য এটি প্রয়োজন হতে পারে, তবে এখানে ডিফল্ট রাখা হলো
-  // const PREVIEW_SIZE = 400;
 
-  // const [downloading, setDownloading] = useState<boolean>(false);
 
   /* ---------------- Card State ---------------- */
   const [cardState, setCardState] = useState<CardState>({
-    image: null,
+    image: queryImgURL,
     scale: 1,
     posX: 0,
     posY: 0,
@@ -110,7 +109,7 @@ export default function FrameCreate() {
     userImg.crossOrigin = "anonymous";
     frameImg.crossOrigin = "anonymous";
     userImg.src = cardState.image;
-    frameImg.src = photoFrame.url;
+    frameImg.src = photoFrame.frameURL;
 
     await Promise.all([
       new Promise((res) => (userImg.onload = res)),
@@ -193,7 +192,7 @@ export default function FrameCreate() {
     Loading.remove();
     // ৫. ডাউনলোড ট্রিগার
     const link = document.createElement("a");
-    link.download = `${photoFrame.name} ${Date.now()}.png`;
+    link.download = `${photoFrame.frameTitle} ${Date.now()}.png`;
     link.href = canvas.toDataURL("image/png", 1.0);
     link.click();
   };
@@ -263,10 +262,10 @@ export default function FrameCreate() {
           {/* Layer 2: Frame Overlay (Foreground) */}
           <div className="absolute inset-0 z-10 pointer-events-none">
             {/* FrameOverlay কম্পোনেন্ট অথবা সরাসরি ইমেজ */}
-            {photoFrame.url && (
+            {photoFrame.frameURL && (
               <div className="absolute inset-0 pointer-events-none z-20">
                 <img
-                  src={photoFrame.url}
+                  src={photoFrame.frameURL}
                   alt="Frame Overlay"
                   className="w-full h-full object-contain"
                 />

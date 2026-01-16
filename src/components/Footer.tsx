@@ -7,20 +7,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           {/* Brand & Description */}
           <div className="md:col-span-2">
-            <Link to={'/'}>
+            <Link to={"/"}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white font-black text-xl italic shadow-lg shadow-green-200">
-                  A
+                  P
                 </div>
                 <h1 className="text-xl font-black tracking-tighter text-white-900">
-                  Aura Card{" "}
-                  <span className="text-green-600 font-medium">STUDIO</span>
+                  Photo Frame{" "}
+                  {/* <span className="text-green-600 font-medium">STUDIO</span> */}
                 </h1>
               </div>
             </Link>
 
-            <p className="text-gray-400 mb-6 max-w-md">
-              Create professional election photo cards, greeting cards, and
+            <p className="text-gray-400 mb-6 max-w-md mt-5">
+              Create professional  photo cards, greeting cards, and
               campaign posters in just a few seconds — completely free and
               incredibly easy to use.
             </p>
@@ -163,7 +163,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
             <p className="text-gray-500">
-              © {new Date().getFullYear()} Aura Card Studio • All Rights
+              © {new Date().getFullYear()} Photo Frame • All Rights
               Reserved
             </p>
 
@@ -186,7 +186,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   className="text-red-500 animate-pulse"
                   height="1em"
